@@ -5,5 +5,6 @@
 ```python
 from bookshelf.models import Book
 
-# Retrieve all books
-Book.objects.all()
+# Retrieve the book we just created
+book1 = Book.objects.get(title="1984")
+book1
