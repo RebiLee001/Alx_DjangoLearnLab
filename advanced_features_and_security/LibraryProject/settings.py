@@ -1,3 +1,6 @@
+# Proxy SSL header support
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,5 +31,3 @@ X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 
-# Proxy SSL header support
-SECURE_PROXY_SSL_HEADER = ("SECURE_PROXY_SSL_HEADER", "HTTP_X_FORWARDED_PROTO")
