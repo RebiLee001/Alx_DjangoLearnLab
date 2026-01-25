@@ -134,5 +134,27 @@ X_FRAME_OPTIONS = 'DENY'                    # Prevent clickjacking
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+# ==========================
+# SECURITY SETTINGS
+# ==========================
+
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+# Forces browsers to use HTTPS only
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Secure cookies (HTTPS only)
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Security headers
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
 
 
