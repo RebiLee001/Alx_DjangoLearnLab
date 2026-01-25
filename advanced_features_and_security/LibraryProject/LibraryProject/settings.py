@@ -118,4 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# At the bottom of settings.py (or anywhere before INSTALLED_APPS references users)
+AUTH_USER_MODEL = "bookshelf.CustomUser"
+
 
