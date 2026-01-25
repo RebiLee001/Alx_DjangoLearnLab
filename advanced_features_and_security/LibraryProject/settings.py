@@ -11,18 +11,22 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL = "bookshelf.CustomUser"
 
-# -------------------------------
-# SECURITY CONFIGURATIONS
-# -------------------------------
+# ==========================
+# SECURITY SETTINGS
+# ==========================
 
-# Browser-side protections
-SECURE_BROWSER_XSS_FILTER = True            # Enable XSS filter in browser
-SECURE_CONTENT_TYPE_NOSNIFF = True          # Prevent MIME-type sniffing
-X_FRAME_OPTIONS = 'DENY'                    # Prevent clickjacking
+SECURE_SSL_REDIRECT = True
 
-# Cookies over HTTPS only
-CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
 SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-# Trust the X-Forwarded-Proto header from the proxy
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
+# Proxy SSL header support
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
