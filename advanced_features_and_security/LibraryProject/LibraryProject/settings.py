@@ -121,4 +121,18 @@ STATIC_URL = 'static/'
 # At the bottom of settings.py (or anywhere before INSTALLED_APPS references users)
 AUTH_USER_MODEL = "bookshelf.CustomUser"
 
+# -------------------------------
+# SECURITY CONFIGURATIONS
+# -------------------------------
+
+# Browser-side protections
+SECURE_BROWSER_XSS_FILTER = True            # Enable XSS filter in browser
+SECURE_CONTENT_TYPE_NOSNIFF = True          # Prevent MIME-type sniffing
+X_FRAME_OPTIONS = 'DENY'                    # Prevent clickjacking
+
+# Cookies over HTTPS only
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+
 
