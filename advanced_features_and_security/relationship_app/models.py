@@ -1,4 +1,3 @@
-# relationship_app/models.py
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -12,6 +11,8 @@ class Author(models.Model):
         return self.name
 
 class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
     title = models.CharField(max_length=200)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
 
