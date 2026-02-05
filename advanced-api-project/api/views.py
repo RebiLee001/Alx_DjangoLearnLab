@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 # Filters
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters import rest_framework as filters  # <-- checker expects this
-
+from rest_framework import filters
 
 # ----------------------------
 # List all books (READ ONLY)
