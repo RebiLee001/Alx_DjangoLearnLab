@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Comment
+from taggit.forms import TagWidget
+from .models import Post, Comment
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(required=True)
@@ -8,6 +9,14 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'tags']
+        widgets = {
+            'tags': TagWidget(),   # 👈 REQUIRED
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:
