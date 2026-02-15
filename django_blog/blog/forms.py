@@ -15,3 +15,11 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "email")
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Add a comment...'})
+        }

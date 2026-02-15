@@ -4,10 +4,10 @@ from .views import (
     PostCreateView, PostUpdateView, PostDeleteView
 )
 
-urlpatterns += [
-    path('posts/', PostListView.as_view(), name='post_list'),
-    path('posts/new/', PostCreateView.as_view(), name='post_create'),
-    path('posts/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
-    path('posts/<int:pk>/edit/', PostUpdateView.as_view(), name='post_update'),
-    path('posts/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
+urlpatterns = [
+    # ... your existing post URLs ...
+    path('posts/<int:post_id>/comments/new/', views.CommentCreateView.as_view(), name='comment-create'),
+    path('comments/<int:pk>/edit/', views.CommentUpdateView.as_view(), name='comment-edit'),
+    path('comments/<int:pk>/delete/', views.CommentDeleteView.as_view(), name='comment-delete'),
 ]
+
