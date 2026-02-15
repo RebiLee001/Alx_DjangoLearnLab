@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from taggit.models import Tag
+from django.shortcuts import get_object_or_404
 
 urlpatterns = [
     # Blog post URLs (your existing ones)
@@ -51,6 +53,21 @@ urlpatterns = [
         views.CommentDeleteView.as_view(),
         name='comment-delete'
     ),
+
+class PostByTagListView(ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        tag_slug = self.kwargs.get('tag_slug')
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        return Post.objects.filter(tags__in=[tag]).distinct()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.kwargs.get('tag_slug')
+        return context
 
 ]
 
