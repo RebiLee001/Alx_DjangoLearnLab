@@ -31,8 +31,20 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
-    ordering = ['-published_date']  # newest first
+    ordering = ['-published_date']
 
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        query = self.request.GET.get('q')
+
+        if query:
+            queryset = Post.objects.filter(
+                Q(title__icontains=query) |
+                Q(content__icontains=query) |
+                Q(tags__name__icontains=query)
+            ).distinct()
+
+        return queryset
 # ----------------------------
 # View single post details
 # ----------------------------
