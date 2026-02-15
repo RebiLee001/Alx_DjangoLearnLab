@@ -54,6 +54,12 @@ urlpatterns = [
         name='comment-delete'
     ),
 
+    path(
+    'tags/<slug:tag_slug>/',
+    views.PostByTagListView.as_view(),
+    name='posts-by-tag'
+),
+
 class PostByTagListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
