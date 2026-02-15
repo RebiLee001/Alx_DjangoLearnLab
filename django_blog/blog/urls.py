@@ -15,6 +15,21 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='blog/logout.html'), name='logout'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
+
+# List all posts
+    path('', views.PostListView.as_view(), name='post-list'),
+
+    # View a single post
+    path('post/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
+
+    # Create a new post
+    path('post/new/', views.PostCreateView.as_view(), name='post-create'),
+
+    # Update an existing post
+    path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post-update'),
+
+    # Delete a post
+    path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
 ]
 
 
