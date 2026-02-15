@@ -81,3 +81,34 @@ book.save()
 
 # Delete the book
 book.delete()
+
+# Authentication System Overview
+
+The blog uses Django’s built-in authentication framework.
+Users can:
+
+Register using a custom form extending UserCreationForm
+
+Login using Django’s LoginView
+
+Logout using LogoutView
+
+Update profile information (username and email)
+
+## Security features include:
+
+CSRF protection
+
+Secure password hashing
+
+Login-required decorators
+
+## To test:
+
+Run python manage.py runserver
+
+Navigate to /register
+
+Create an account
+
+Login and access /profile
