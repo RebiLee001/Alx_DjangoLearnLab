@@ -2,7 +2,8 @@ from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import CustomUser
-
+from .models import Post
+from .serializers import PostSerializer
 
 class FollowUserView(generics.GenericAPIView):
     queryset = CustomUser.objects.all()
@@ -38,3 +39,7 @@ class UnfollowUserView(generics.GenericAPIView):
             {"message": f"You unfollowed {user_to_unfollow.username}"},
             status=status.HTTP_200_OK
         )
+    
+    Checks for “Create a view in the posts app that generates a feed based on the posts from users that the current user follows. This view should return posts ordered by creation date, showing the most recent posts at the top.” task
+
+posts/views.py doesn't contain: ["Post.objects.filter(author__in=following_users).order_by", "following.all()"]
